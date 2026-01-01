@@ -1,0 +1,8 @@
+# Copy this file to config.py and update the values as needed.
+
+GITHUB_TOKEN = ""  # Optional GitHub token for the API client
+GITHUB_SESSION_COOKIE = ""  # Optional GitHub session cookie for HTML search requests
+
+# OpenAI-compatible endpoint configuration
+LLM_BASE_URL = "http://localhost:1234/v1"  # Required
+LLM_API_KEY = "API_KEY_HERE"  # Dummy default, replace when needed

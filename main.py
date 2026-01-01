@@ -3,20 +3,16 @@ import traceback
 from typing import List
 
 import requests
-from dotenv import load_dotenv, find_dotenv
 
 from src.args import parse_args
 from src.pipeline import search_one_keyword
 from src.util import create_directory, print_err
 from src.scanned_db import ScannedDb
-
-
-load_dotenv(find_dotenv(), override=False)
+import config
 
 session = requests.Session()
-gh_sess_cookie = os.getenv("GITHUB_SESSION_COOKIE")
-if gh_sess_cookie:
-    session.headers["_gh_sess"] = gh_sess_cookie
+if config.GITHUB_SESSION_COOKIE:
+    session.headers["_gh_sess"] = config.GITHUB_SESSION_COOKIE
 
 
 def get_keywords(keywords_file: str) -> List[str]:

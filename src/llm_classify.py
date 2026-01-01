@@ -1,5 +1,4 @@
 import json
-import os
 from typing import Any, Dict, List, Literal, Optional, Set, get_args
 
 from openai import OpenAI
@@ -7,17 +6,18 @@ from openai import OpenAI
 from providers import PROVIDERS_TYPE, parse_provider
 from prompt import get_prompt
 from src.util import print_err
+import config
 
 
 CONFIDENCE_LEVELS_TYPE = Literal["NONE", "LOW", "MEDIUM", "HIGH"]
 CONFIDENCE_LEVELS: Set[CONFIDENCE_LEVELS_TYPE] = set(get_args(CONFIDENCE_LEVELS_TYPE))
 
 
-LLM_API_KEY = os.getenv("LLM_API_KEY", "")
-LLM_BASE_URL = os.getenv("LLM_BASE_URL", "")
+LLM_API_KEY = config.LLM_API_KEY
+LLM_BASE_URL = config.LLM_BASE_URL
 
 if not LLM_BASE_URL:
-    raise RuntimeError("LLM_BASE_URL environment variable must be set")
+    raise RuntimeError("LLM_BASE_URL must be defined in config.py")
 
 client = OpenAI(api_key=LLM_API_KEY, base_url=LLM_BASE_URL)
 

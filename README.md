@@ -48,18 +48,19 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-4. Configure environment variables. Copy `.env.example` to `.env` and update
-   values as needed.
+4. Configure application settings. Copy `config.py.example` to `config.py` and
+   update values as needed.
 
-```env
-GITHUB_TOKEN="ghp_..." # GitHub Token for increased API rate limits
-GITHUB_SESSION_COOKIE="..." # Optional: GitHub session cookie for HTML requests
-LLM_BASE_URL="http://localhost:1234/v1" # Required: Base URL for OpenAI compatible endpoint
-LLM_API_KEY="API_KEY_HERE" # Change to API key if authentication needed
+```python
+GITHUB_TOKEN = "ghp_..." # GitHub Token for increased API rate limits
+GITHUB_SESSION_COOKIE = "..." # Optional: GitHub session cookie for HTML requests
+
+LLM_BASE_URL = "http://localhost:1234/v1" # Required: Base URL for OpenAI compatible endpoint
+LLM_API_KEY = "API_KEY_HERE" # Change to API key if authentication needed
 ```
 
 5. Ensure that your OpenAI-compatible endpoint is reachable from this machine
-   and that you have configured `.env` with `LLM_BASE_URL` (and optionally
+   and that you have configured `config.py` with `LLM_BASE_URL` (and optionally
    `LLM_API_KEY`).
 
 ## Usage
@@ -68,7 +69,7 @@ Prepare a newline separated keywords file with terms to search for. An example
 file is provided in `keywords.txt`.
 
 Configure an OpenAI-compatible endpoint. Provide the base URL and API key (if
-required) in `.env`. This project works with any API that implements the
+required) in `config.py`. This project works with any API that implements the
 OpenAI chat completions protocol (e.g., LM Studio, Llama.cpp, vLLM, self-hosted
 gateways, etc.).
 

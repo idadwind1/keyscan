@@ -1,11 +1,7 @@
 from typing import Dict, List, Literal, TypedDict, cast
 
-import os
 import requests
-from dotenv import load_dotenv, find_dotenv
-
-# Load environment variables from .env if present
-load_dotenv(find_dotenv(), override=False)
+import config
 
 
 class FileJSON(TypedDict):
@@ -43,9 +39,8 @@ def get_api_headers() -> Dict[str, str]:
         ),
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
     }
-    github_token = os.getenv("GITHUB_TOKEN")
-    if github_token:
-        headers["Authorization"] = f"Bearer {github_token}"
+    if config.GITHUB_TOKEN:
+        headers["Authorization"] = f"Bearer {config.GITHUB_TOKEN}"
     return headers
 
 
