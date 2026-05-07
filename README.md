@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/aerovato/keyscan/main/.github/README/banner.jpg" alt="Keyscan Banner" />
+</p>
+
 # Keyscan
 
 Keyscan: LLM-powered API key scanner.
