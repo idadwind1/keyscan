@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 from typing import Dict
 
-from verify import VALIDITY
+from src.verify import VALIDITY
 from src.llm_classify import PROVIDERS_TYPE
 from src.util import create_directory
 

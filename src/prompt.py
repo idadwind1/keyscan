@@ -2,7 +2,7 @@ from typing import List
 
 from openai.types.chat import ChatCompletionMessageParam
 
-from providers import ALL_PROVIDERS
+from src.providers import ALL_PROVIDERS
 
 
 def get_prompt(line: str) -> List[ChatCompletionMessageParam]:

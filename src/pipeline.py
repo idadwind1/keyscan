@@ -2,12 +2,12 @@ from typing import List, Set, TypedDict, cast
 
 import requests
 
-from processing import ALL_FILE_TYPES, GIST_FILE_TYPE, extract_verifiable_value, preprocess_contents
+from src.processing import ALL_FILE_TYPES, GIST_FILE_TYPE, extract_verifiable_value, preprocess_contents
 from src.args import Arguments
 from src.scanned_db import ScannedDb
 from src.search_gists import search_gists
 from src.util import save_processing_state
-from verify import verify, VALIDITY
+from src.verify import verify, VALIDITY
 from src.gists import GistInfo, get_gist_info
 from src.llm_classify import (
     CONFIDENCE_LEVELS_TYPE,
@@ -110,7 +110,7 @@ def search_one_keyword(keyword: str, args: Arguments, database: ScannedDb, sessi
     
     file_type = args.file_type
     if not file_type in ALL_FILE_TYPES:
-        raise Exception(f"Unsupported file type {file_type}. Please add processing functions for the new file type in processing.py.")
+        raise Exception(f"Unsupported file type {file_type}. Please add processing functions for the new file type in src/processing.py.")
     file_type = cast(GIST_FILE_TYPE, file_type)
 
     for page_number, gist_ids in search_gists(

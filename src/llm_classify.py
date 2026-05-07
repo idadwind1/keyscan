@@ -3,8 +3,8 @@ from typing import Any, Dict, List, Literal, Optional, Set, get_args
 
 from openai import OpenAI
 
-from providers import PROVIDERS_TYPE, parse_provider
-from prompt import get_prompt
+from src.providers import PROVIDERS_TYPE, parse_provider
+from src.prompt import get_prompt
 from src.util import print_err
 import config
 

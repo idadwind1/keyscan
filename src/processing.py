@@ -4,7 +4,7 @@ Contains file type specific processing functions.
 
 from typing import Callable, List, Literal, Optional, get_args
 
-from file_modules.dotenv import get_dotenv_value, preprocess_dotenv
+from src.file_modules.dotenv import get_dotenv_value, preprocess_dotenv
 
 
 GIST_FILE_TYPE = Literal[
