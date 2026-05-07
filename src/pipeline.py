@@ -4,17 +4,14 @@ import requests
 
 from src.processing import ALL_FILE_TYPES, GIST_FILE_TYPE, extract_verifiable_value, preprocess_contents
 from src.args import Arguments
-from src.scanned_db import ScannedDb
-from src.search_gists import search_gists
-from src.util import save_processing_state
+from src.storage import ScannedDb, save_processing_state, save_record
 from src.verify import verify, VALIDITY
-from src.gists import GistInfo, get_gist_info
-from src.llm_classify import (
+from src.gists import GistInfo, get_gist_info, search_gists
+from src.classify import (
     CONFIDENCE_LEVELS_TYPE,
     ClassificationResponse,
     classify_lines,
 )
-from src.save import save_record
 
 
 class ProcessGistResult(TypedDict):

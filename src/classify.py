@@ -1,12 +1,17 @@
 import json
+import pathlib
+import sys
 from typing import Any, Dict, List, Literal, Optional, Set, get_args
 
 from openai import OpenAI
+from openai.types.chat import ChatCompletionMessageParam
 
-from src.providers import PROVIDERS_TYPE, parse_provider
-from src.prompt import get_prompt
-from src.util import print_err
+from src.verify import PROVIDERS_TYPE, parse_provider, ALL_PROVIDERS
 import config
+
+
+def print_err(s):
+    print(s, file=sys.stderr)
 
 
 CONFIDENCE_LEVELS_TYPE = Literal["NONE", "LOW", "MEDIUM", "HIGH"]
@@ -63,6 +68,20 @@ class ClassificationResponse:
             print_err(f"ClassificationResponse exception: {exception}")
             print_err(f"Response Content: {response_content}")
             print_err(f"Response JSON: {response_json}")
+
+
+PROMPT_PATH = pathlib.Path(__file__).resolve().parent.parent / "prompt.txt"
+
+
+def get_prompt(line: str) -> List[ChatCompletionMessageParam]:
+    providers_string = ", ".join(ALL_PROVIDERS)
+    system_template = PROMPT_PATH.read_text(encoding="utf-8")
+    system = system_template.replace("{providers_string}", providers_string)
+    user = f"Analyze the following variable:\n{line}\n"
+    return [
+        {"role": "system", "content": system},
+        {"role": "user", "content": user},
+    ]
 
 
 def classify_single_line(

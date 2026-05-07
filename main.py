@@ -6,8 +6,7 @@ import requests
 
 from src.args import parse_args
 from src.pipeline import search_one_keyword
-from src.util import create_directory, print_err
-from src.scanned_db import ScannedDb
+from src.storage import create_directory, print_err, ScannedDb
 import config
 
 session = requests.Session()

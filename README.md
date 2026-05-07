@@ -92,7 +92,7 @@ When potential exposures are detected, Keyscan will write JSON records into the 
 
 #### Prompt Customization
 
-Tweak classification behavior by editing the system and user prompts in `prompt.py`.
+Tweak classification behavior by editing the system prompt in `prompt.txt`.
 
 #### Adding File Types
 
@@ -100,7 +100,7 @@ Add support for additional file types by extending `processing.py` and adding a 
 
 #### Adding Additional Providers
 
-Add additional provider identifiers in `providers.py` and an optional verification function in `verify.py`.
+Add additional provider identifiers in `verify.py` and an optional verification function in the same file.
 
 ## Terms of Usage
 
